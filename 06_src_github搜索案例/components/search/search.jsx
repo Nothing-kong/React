@@ -39,7 +39,6 @@ export default class Search extends Component{
           error:error.message
         })
       })
-    
     //4.清空输入
     this.myRef.current.value = ''
   }
