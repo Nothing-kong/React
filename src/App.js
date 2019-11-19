@@ -1,34 +1,37 @@
 import React,{Component} from 'react'
-import Add from './components/add/add'
 import List from './components/list/list'
+import Search from './components/search/search'
 
 export default class App extends Component{
 
   state = {
-    commentObj:{}
+    users:[],
+    isFirst:true,
+    isLoading:false,
+    error:''
   }
 
-  sendCommentObj = (commentObj)=>{
-    this.setState({commentObj})
+  updateAppState = (obj)=>{
+    /* 
+    传递过来的obj必须是如下格式： 
+    {
+      users:[],
+      isFirst:true,
+      isLoading:false,
+      error:''
+    } */
+    this.setState(obj)
   }
 
   render(){
     return (
-      <div>
-        <header className="site-header jumbotron">
-          <div className="container">
-            <div className="row">
-              <div className="col-xs-12">
-                <h1>请发表对React的评论</h1>
-              </div>
-            </div>
-          </div>
-        </header>
         <div className="container">
-          <Add sendCommentObj={this.sendCommentObj}/>
-          <List commentObj={this.state.commentObj}/>
+          <section className="jumbotron">
+            <h3 className="jumbotron-heading">Search Github Users</h3>
+            <Search updateAppState={this.updateAppState}/>
+          </section>
+          <List {...this.state}/>
         </div>
-      </div>
     )
   }
 }
