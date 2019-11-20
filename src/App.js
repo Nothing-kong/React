@@ -1,28 +1,37 @@
 import React,{Component} from 'react'
-import List from "./components/list/list";
-import Search from "./components/search/search";
+import {NavLink,Route,Switch,Redirect} from 'react-router-dom'
+import About from './pages/about'
+import Home from './pages/home'
 
 export default class App extends Component{
-
-  state = {
-    users:[],
-    isFirst:true,
-    isLoading:false,
-    error:''
-  }
-
-  updateAppState = (obj) => {
-    this.setState(obj)
-  }
   render(){
     return (
-      <div className = 'container'>
-        <section className="jumbotron">
-            <h3 className="jumbotron-heading">Search Github Users</h3>
-            <Search updateAppState={this.updateAppState}/>
-          </section>
-          <List {...this.state}/>
-      </div>
+        <div>
+          <div className="row">
+            <div className="col-xs-offset-2 col-xs-8">
+              <div className="page-header"><h2>React Router Demo</h2></div>
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-xs-2 col-xs-offset-2">
+              <div className="list-group">
+                  <NavLink className="list-group-item" to="/about" activeClassName="demo">About</NavLink>
+                  <NavLink className="list-group-item" to="/home" activeClassName="demo">Home</NavLink>
+              </div>
+            </div>
+            <div className="col-xs-6">
+              <div className="panel">
+                <div className="panel-body">
+                  <Switch>
+                    <Route path="/about" component={About}/>
+                    <Route path="/home" component={Home}/>
+                    <Redirect to="/about"/>
+                  </Switch>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
     )
   }
 }
