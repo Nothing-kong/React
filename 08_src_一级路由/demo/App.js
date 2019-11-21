@@ -1,13 +1,13 @@
 import React,{Component} from 'react'
-import {NavLink,Route,Switch,Redirect} from 'react-router-dom'
+import { NavLink,Route,Switch,Redirect } from "react-router-dom";
 import About from './pages/about'
 import Home from './pages/home'
 
 export default class App extends Component{
   render(){
     return (
-        <div>
-          <div className="row">
+      <div>
+        <div className="row">
             <div className="col-xs-offset-2 col-xs-8">
               <div className="page-header"><h2>React Router Demo</h2></div>
             </div>
@@ -31,7 +31,7 @@ export default class App extends Component{
               </div>
             </div>
           </div>
-        </div>
+      </div>
     )
   }
 }
